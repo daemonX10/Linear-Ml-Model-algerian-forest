@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Algerian Forest Prediction</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <style>
+            body {
+                background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('https://source.unsplash.com/1600x900/?machine,learning');
+                background-size: cover;
+                background-repeat: no-repeat;
+            }
+        </style>
+</head>
+
+<body class="bg-gray-100">
+    <div class="container mx-auto p-4">
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-white">Algerian Forest Prediction Model</h1>
+            <p class="text-lg text-white mt-2">Predict forest conditions with machine learning</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">Predict Fire Weather Index (FWI) </h2>
+                <form class="space-y-4" action="{{url_for('predict')}}" method="post">
+                    <div>
+                        <label for="temperature" class="block text-sm font-medium text-gray-700">Temperature (°C)</label>
+                        <input type="number" id="temperature" name="temperature" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter temperature...">
+                    </div>
+                    <div>
+                        <label for="rh" class="block text-sm font-medium text-gray-700">Relative Humidity (%)</label>
+                        <input type="number" id="rh" name="rh" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter relative humidity...">
+                    </div>
+                    <div>
+                        <label for="ws" class="block text-sm font-medium text-gray-700">Wind Speed (km/h)</label>
+                        <input type="number" id="ws" name="ws" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter wind speed...">
+                    </div>
+                    <div>
+                        <label for="rain" class="block text-sm font-medium text-gray-700">Rain (mm/m²)</label>
+                        <input type="number" id="rain" name="rain" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter rain...">
+                    </div>
+                    <div>
+                        <label for="ffmc" class="block text-sm font-medium text-gray-700">FFMC</label>
+                        <input type="number" id="ffmc" name="ffmc" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter FFMC...">
+                    </div>
+                    <div>
+                        <label for="dmc" class="block text-sm font-medium text-gray-700">DMC</label>
+                        <input type="number" id="dmc" name="dmc" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter DMC...">
+                    </div>
+                    <div>
+                        <label for="isi" class="block text-sm font-medium text-gray-700">ISI</label>
+                        <input type="number" id="isi" name="isi" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter ISI...">
+                    </div>
+                    <div>
+                        <label for="classes" class="block text-sm font-medium text-gray-700">Classes</label>
+                        <input type="text" id="classes" name="classes" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter classes...">
+                    </div>
+                    <div>
+                        <label for="region" class="block text-sm font-medium text-gray-700">Region</label>
+                        <input type="text" id="region" name="region" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full shadow-sm sm:text-sm border-gray-300 rounded-md" placeholder="Enter region...">
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Predict</button>
+                    </div>
+                </form>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold text-gray-800 mb-4">About the Model</h2>
+                <p class="text-gray-700">Our model uses machine learning algorithms to predict forest conditions based on temperature, humidity, and wind speed. It helps in early detection and prevention of forest fires in Algeria.</p>
+                <h2 class="text-xl  text-gray-800 mt-4 mb-2 text-center ">Model Accuracy 90%</h2>
+                <h2 class="text-2xl font-bold text-green-700 mt-4 mb-2 bg-green-100 p-3 rounded shadow">{{prediction_text}}</h2>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
