@@ -1,5 +1,7 @@
-Flask
+flask
 numpy 
 pandas
 scikit-learn
+Jinja2
+waitress
 
